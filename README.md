@@ -9,4 +9,4 @@ live list from the shared Supabase test project. Spec: impeccable-reviews#408.
 
 | Production | Preview gate |
 |---|---|
-| _not deployed_ | no (the site's own sign-in) |
+| https://moss-reach-f23u.vercel.app | no (the site's own sign-in) |
