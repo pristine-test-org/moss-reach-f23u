@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Field notes · Moss Reach</title>
+    <style>
+      :root { font-family: system-ui, sans-serif; color: #1c1c1c; background: #fafaf7; }
+      body { margin: 0; }
+      header, footer { max-width: 44rem; margin: 0 auto; padding: 1.25rem 1rem; }
+      header { display: flex; justify-content: space-between; align-items: center; }
+      .mark { font-weight: 700; color: #2f7d4f; }
+      main { max-width: 44rem; margin: 0 auto; padding: 1.25rem 1rem; }
+      /* Intentional, for Impeccable's test drive: gradient text on the heading. */
+      h1 {
+        font-size: clamp(2rem, 6vw, 3rem); margin: 2rem 0 1rem;
+        background: linear-gradient(90deg, #2f7d4f, #7a3fd1);
+        -webkit-background-clip: text; background-clip: text; color: transparent;
+      }
+      /* Intentional, for Impeccable's test drive: body text flush with the viewport edges, no background. */
+      .intro { margin: 0; padding: 0; max-width: none; width: 100vw; font-size: 1.1rem; line-height: 1.5; }
+      /* Intentional, for Impeccable's test drive: light grey text well under 4.5:1 on this background. */
+      .aside { color: #c4c4c0; margin: 1.5rem 0; line-height: 1.5; }
+      table { border-collapse: collapse; width: 100%; margin: 1.5rem 0; }
+      th, td { text-align: left; padding: 0.5rem 0.6rem; border-bottom: 1px solid #e5e5e0; }
+      .meter { height: 0.5rem; background: #e5e5e0; border-radius: 999px; margin: 1rem 0; }
+      /* Intentional, for Impeccable's test drive: a transition on a layout property (width). */
+      .meter span { display: block; height: 100%; width: 40%; background: #2f7d4f; border-radius: 999px; transition: width 0.3s; }
+      .meter:hover span { width: 90%; }
+      /* Intentional, for Impeccable's test drive: link text under the 11px floor. */
+      .back { font-size: 10px; color: #2f7d4f; }
+      footer { color: #777; font-size: 0.9rem; border-top: 1px solid #e5e5e0; }
+    </style>
+    <script>
+      // Same guard as the other pages: a signed-out visitor goes to the customer login.
+      // supabase-js keeps the session in localStorage under sb-<project ref>-auth-token.
+      (function () {
+        var signedIn = Object.keys(localStorage).some(function (k) {
+          return /^sb-.+-auth-token$/.test(k);
+        });
+        if (!signedIn) location.replace("/login");
+      })();
+    </script>
+  </head>
+  <body>
+    <header><span class="mark">Moss Reach</span><a class="back" href="/">Back to the list</a></header>
+    <p class="intro">Moss Reach keeps one shared list, and everyone on a team sees the same items in the same order, newest first.</p>
+    <main>
+      <h1>Field notes</h1>
+      <p class="aside">Notes from the team on how the list behaves day to day.</p>
+      <table>
+        <thead><tr><th>Question</th><th>Short answer</th></tr></thead>
+        <tbody>
+          <tr><td>Who can see the list?</td><td>Anyone signed in, whatever their role.</td></tr>
+          <tr><td>How many items show at once?</td><td>The five newest, with finished ones ticked.</td></tr>
+          <tr><td>When does it refresh?</td><td>Each time the page opens.</td></tr>
+        </tbody>
+      </table>
+      <p>List completion this week, hover to see the end of the week:</p>
+      <div class="meter" role="img" aria-label="Completion this week"><span></span></div>
+    </main>
+    <footer>Moss Reach · a test site for Impeccable reviews</footer>
+  </body>
+</html>
